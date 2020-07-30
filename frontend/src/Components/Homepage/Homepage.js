@@ -14,7 +14,7 @@ const Homepage = (props) => {
   console.log(props);
   return (
     <React.Fragment>
-      <Typography variant="h1">
+      <Typography variant="h2">
         Aren't you tired of the quarantine hairstyle?
       </Typography>
       <br />

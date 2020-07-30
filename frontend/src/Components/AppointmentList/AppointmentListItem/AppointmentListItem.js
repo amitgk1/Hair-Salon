@@ -15,7 +15,7 @@ import {
   Person,
   CalendarToday,
 } from "@material-ui/icons";
-import haircutIcon from "../../../Haircut-icon.png";
+import haircutIcon from "../../../Images/Haircut-icon.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +26,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const icons = {
+  "haircut appointment": (
+    <img src={haircutIcon} width={30} alt="haircut icon" />
+  ),
+  "hair color appointment": <Palette />,
+  "hair straightening appointment": <Straighten />,
+};
+
 const AppointmentListItem = (props) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -34,18 +42,10 @@ const AppointmentListItem = (props) => {
     setOpen((prev) => !prev);
   };
 
-  let icon = null;
-  if (props.title.includes("haircut")) {
-    icon = <img src={haircutIcon} width={30} alt="haircut icon" />;
-  } else if (props.title.includes("color")) {
-    icon = <Palette />;
-  } else {
-    icon = <Straighten />;
-  }
   return (
     <div className={classes.root}>
       <ListItem button onClick={handleClick}>
-        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemIcon>{icons[props.title]}</ListItemIcon>
         <ListItemText primary={props.title} />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>

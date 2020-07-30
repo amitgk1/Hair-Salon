@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "../../axios-intance";
+import axios from "axios";
 import Paper from "@material-ui/core/Paper";
 import {
   ViewState,
@@ -30,9 +30,6 @@ const Calendar = ({
 
   const isValidHour = (oldAppointments, newAppointment) => {
     if (newAppointment.hasOwnProperty("startDate")) {
-      // let valid = oldAppointments.every(
-      //   (obj) => obj.startDate.getTime() !== newAppointment.startDate.getTime()
-      // );
       let valid = ldEvery(oldAppointments, (obj) => {
         console.log(obj, newAppointment);
         return obj.startDate.getTime() !== newAppointment.startDate.getTime();
@@ -77,16 +74,11 @@ const Calendar = ({
   useEffect(() => {
     console.log("previos apmts: ", prevAppointments);
     if (prevAppointments && prevAppointments[0] !== "placeholder") {
-      //!isEmpty(prevAppointments)
       if (prevAppointments.length < appointments.length) {
         axios
           .post("/api/appointments/", appointments[appointments.length - 1])
           .then((results) => console.log(results));
       } else if (prevAppointments.length === appointments.length) {
-        // console.log(
-        //   "change",
-        //   differenceBy(prevAppointments, appointments, "title")
-        // );
         let id;
         prevAppointments.every((obj, index) => {
           id = obj.id;

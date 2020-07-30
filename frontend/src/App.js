@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Calendar from "./Components/Calendar/Calendar";
 import Modal from "./Components/Modal/Modal";
 import Homepage from "./Components/Homepage/Homepage";
-import axios from "./axios-intance";
+import axios from "axios";
 import AppointmentList from "./Components/AppointmentList/AppointmentList";
 
 const App = () => {
@@ -41,9 +41,9 @@ const App = () => {
           />
         </Route>
         <Route path="/myAppointments">
-          {appointments[0] !== "placeholder" ? (
+          {appointments[0] !== "placeholder" && (
             <AppointmentList {...{ appointments }} />
-          ) : null}
+          )}
         </Route>
         <Route path="" exact component={Homepage} />
       </Switch>

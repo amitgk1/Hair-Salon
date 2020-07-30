@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import logo from "../../hair-salon-logo.png";
+import logo from "../../Images/hair-salon-logo.png";
 import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
